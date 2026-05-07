@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+.DS_Store
+.env
+.env.*
+!.env.example
+*.log
+.vite
+
+# vite sandbox cache (auto-generated)
+vite.config.js.timestamp-*.mjs
