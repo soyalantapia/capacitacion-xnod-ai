@@ -41,6 +41,21 @@ const WA_PAY = `${WHATSAPP_BASE}?text=${encodeURIComponent(
 const GLOBAL_CSS = `
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
+
+  /* Focus visible for accessibility (keyboard nav) */
+  *:focus { outline: none; }
+  *:focus-visible {
+    outline: 3px solid ${C.accent};
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Smooth scroll respeta prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    html { scroll-behavior: auto; }
+  }
+
   body {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     background: ${C.white};
@@ -344,7 +359,10 @@ function Hero() {
                 src="fotos/alan-portrait.jpg"
                 alt="Alan Tapia, fundador de XNOD"
                 loading="eager"
-                fetchpriority="high"
+                decoding="async"
+                fetchPriority="high"
+                width="64"
+                height="64"
                 style={{
                   width: 64,
                   height: 64,
@@ -501,6 +519,9 @@ function Problema() {
                   src="fotos/alan-portrait.jpg"
                   alt="Alan Tapia"
                   loading="lazy"
+                  decoding="async"
+                  width="52"
+                  height="52"
                   style={{
                     width: 52, height: 52,
                     borderRadius: "50%",
@@ -1236,6 +1257,7 @@ function PorQueXNOD() {
               src="fotos/alan-portrait.jpg"
               alt="Alan Tapia, fundador de XNOD"
               loading="lazy"
+              decoding="async"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
             <div style={{
@@ -1336,6 +1358,9 @@ function EventosAnteriores() {
                   src={ev.src}
                   alt={ev.caption}
                   loading="lazy"
+                  decoding="async"
+                  width="320"
+                  height="240"
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />
               </div>
@@ -1492,7 +1517,7 @@ function Inversion() {
     "Agente IA propio sin caducidad para tu empresa",
     "Grupo WhatsApp con contenido semanal continuo",
     "Soporte continuo de XNOD para siempre",
-    "Viáticos en Córdoba (13-20 mayo) y Buenos Aires (desde 20 mayo)",
+    "Viáticos incluidos en Córdoba y Buenos Aires",
   ];
   const noIncluye = [
     "Cobertura fotográfica/video profesional (cotizada aparte)",
@@ -2109,6 +2134,20 @@ export default function LandingPage() {
   return (
     <>
       <style>{GLOBAL_CSS}</style>
+      <a
+        href="#top"
+        style={{
+          position: "absolute", left: "-9999px", top: 8,
+          padding: "10px 18px", borderRadius: 8,
+          background: C.primary, color: "#fff",
+          fontSize: 14, fontWeight: 600,
+          zIndex: 9999, textDecoration: "none",
+        }}
+        onFocus={(e) => { e.currentTarget.style.left = "16px"; }}
+        onBlur={(e) => { e.currentTarget.style.left = "-9999px"; }}
+      >
+        Saltar al contenido principal
+      </a>
       <NavHeader />
       <main id="top">
         <Hero />
