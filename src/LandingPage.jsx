@@ -1898,11 +1898,11 @@ function CTAFinal() {
         <div className="xnod-container">
           <FadeIn>
             <div style={{ textAlign: "center", maxWidth: 880, margin: "0 auto" }}>
-              <p className="xnod-eyebrow xnod-eyebrow-light">Empezá ahora</p>
-              <h2 className="xnod-h2" style={{ lineHeight: 1.05, color: "#fff", marginBottom: 28, fontSize: "clamp(36px, 6vw, 56px)" }}>
-                15 minutos hoy.<br/>
+              <p className="xnod-eyebrow xnod-eyebrow-light">No esperes más</p>
+              <h2 className="xnod-h2" style={{ lineHeight: 1.05, color: "#fff", marginBottom: 28, fontSize: "clamp(34px, 5vw, 52px)" }}>
+                Cada semana sin activar IA<br/>
                 <span style={{ background: `linear-gradient(135deg, ${C.accentLight}, ${C.accent})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  Tu equipo activado en 2 semanas.
+                  es una semana de ventaja para tu competencia.
                 </span>
               </h2>
               <p className="xnod-lead" style={{ marginBottom: 40, color: "rgba(255,255,255,0.85)", maxWidth: 720, marginLeft: "auto", marginRight: "auto" }}>
