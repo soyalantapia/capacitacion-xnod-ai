@@ -149,6 +149,10 @@ const GLOBAL_CSS = `
     .xnod-speaker-card { grid-template-columns: 360px 1fr !important; align-items: stretch; }
     .xnod-speaker-card > div:first-child { aspect-ratio: auto !important; }
   }
+
+  @media (min-width: 768px) {
+    .xnod-pricing-header { grid-template-columns: 1fr minmax(280px, 360px) !important; gap: 48px !important; }
+  }
 `;
 
 /* ====================  COMPONENTES PEQUEÑOS  ==================== */
@@ -304,7 +308,7 @@ function Hero() {
             }}>
               <img
                 src="fotos/alan-portrait.jpg"
-                alt="Alan Cernigoy, fundador de XNOD"
+                alt="Alan Tapia, fundador de XNOD"
                 loading="eager"
                 fetchpriority="high"
                 style={{
@@ -461,7 +465,7 @@ function Problema() {
               <figcaption style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <img
                   src="fotos/alan-portrait.jpg"
-                  alt="Alan Cernigoy"
+                  alt="Alan Tapia"
                   loading="lazy"
                   style={{
                     width: 52, height: 52,
@@ -473,7 +477,7 @@ function Problema() {
                 />
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 700, color: C.primaryDeep, marginBottom: 2 }}>
-                    Alan Cernigoy
+                    Alan Tapia
                   </p>
                   <p style={{ fontSize: 12.5, color: C.textMuted, fontWeight: 500, letterSpacing: 0.3 }}>
                     Fundador de XNOD
@@ -502,7 +506,7 @@ function Solucion() {
             XNOD Activate ordena cómo tu empresa usa IA en una sola jornada.
           </h2>
           <p className="xnod-lead" style={{ marginBottom: 18 }}>
-            Es una sesión de trabajo en vivo, no una charla. Alan Cernigoy trabaja con todo tu equipo en simultáneo, con casos y herramientas adaptadas a tu industria.
+            Es una sesión de trabajo en vivo, no una charla. Alan Tapia trabaja con todo tu equipo en simultáneo, con casos y herramientas adaptadas a tu industria.
           </p>
           <p className="xnod-lead" style={{ marginBottom: 24 }}>
             Cada empleado se va con tareas reales resueltas con IA y un marco claro de qué se sube, qué no y bajo qué reglas.
@@ -1115,7 +1119,7 @@ function PorQueXNOD() {
           }}>
             <img
               src="fotos/alan-portrait.jpg"
-              alt="Alan Cernigoy, fundador de XNOD"
+              alt="Alan Tapia, fundador de XNOD"
               loading="lazy"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
@@ -1130,7 +1134,7 @@ function PorQueXNOD() {
               QUIEN DICTA CADA ACTIVACIÓN
             </p>
             <h3 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 800, color: "#fff", marginBottom: 8, letterSpacing: "-0.02em" }}>
-              Alan Cernigoy
+              Alan Tapia
             </h3>
             <p style={{ fontSize: 15, color: C.accentLight, fontWeight: 600, marginBottom: 24, letterSpacing: 0.3 }}>
               Fundador de XNOD · Implementador, no consultor
@@ -1350,12 +1354,13 @@ function MarketingMarca() {
 
 function Inversion() {
   const incluye = [
-    "Llamada previa de coordinación",
+    "Llamada previa de coordinación con vos",
     "Jornada personalizada de 2hs (presencial u online)",
-    "Examen individual + certificado",
-    "Grabación cruda + transcripción",
-    "Agente IA propio sin caducidad",
+    "Examen individual + certificado por persona",
+    "Grabación cruda + transcripción del evento",
+    "Agente IA propio sin caducidad para tu empresa",
     "Grupo WhatsApp con contenido semanal continuo",
+    "Soporte continuo de XNOD para siempre",
     "Viáticos en Córdoba (13-20 mayo) y Buenos Aires (desde 20 mayo)",
   ];
   const noIncluye = [
@@ -1363,59 +1368,291 @@ function Inversion() {
     "Grupos segmentados por área (cada grupo cotizado aparte)",
     "Viáticos fuera de Córdoba/Buenos Aires",
   ];
+  const comparativa = [
+    { item: "Curso online corporativo", costo: "USD 2.000+", costoLabel: "por empleado / año", note: "Material genérico que se olvida" },
+    { item: "Consultoría tradicional", costo: "USD 5.000+", costoLabel: "por proyecto", note: "Sin entregables reutilizables" },
+    { item: "XNOD Activate", costo: "USD 500", costoLabel: "todo incluido · sin caducidad", note: "Tu empresa entera capacitada", highlight: true },
+  ];
+
   return (
-    <Section id="inversion" bg={C.surface}>
-      <FadeIn>
-        <p className="xnod-eyebrow" style={{ textAlign: "center" }}>Inversión</p>
-        <h2 className="xnod-h2" style={{ textAlign: "center", maxWidth: 920, margin: "0 auto 16px" }}>
-          USD 500. Sin tiers, sin sorpresas, sin letra chica.
-        </h2>
-        <p className="xnod-lead" style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 48px" }}>
-          Un solo paquete con todo incluido. Pago anticipado al confirmar fecha. Aceptamos pesos al dólar venta oficial, USD o cripto.
-        </p>
-      </FadeIn>
+    <section id="inversion" style={{
+      background: `linear-gradient(180deg, ${C.primaryNight} 0%, #160829 50%, ${C.primaryNight} 100%)`,
+      color: "#fff",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      <div aria-hidden="true" style={{
+        position: "absolute", top: -200, right: -200, width: 600, height: 600,
+        borderRadius: "50%", background: `radial-gradient(closest-side, ${C.primary}66, transparent 70%)`,
+        pointerEvents: "none",
+      }}/>
+      <div aria-hidden="true" style={{
+        position: "absolute", bottom: -240, left: -240, width: 600, height: 600,
+        borderRadius: "50%", background: `radial-gradient(closest-side, ${C.accent}44, transparent 70%)`,
+        pointerEvents: "none",
+      }}/>
 
-      <FadeIn>
-        <div style={{ background: C.white, borderRadius: 24, border: `2px solid ${C.primary}`, padding: 0, overflow: "hidden", maxWidth: 980, margin: "0 auto", boxShadow: `0 20px 60px ${C.primary}22` }}>
-          <div style={{ background: `linear-gradient(135deg, ${C.primary} 0%, ${C.primaryDeep} 100%)`, color: "#fff", padding: "32px", textAlign: "center" }}>
-            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, opacity: 0.85, marginBottom: 8 }}>XNOD ACTIVATE</p>
-            <p style={{ fontSize: 56, fontWeight: 800, lineHeight: 1 }}>USD 500</p>
-            <p style={{ fontSize: 14, opacity: 0.85, marginTop: 8 }}>paquete único · pago anticipado</p>
-          </div>
-
-          <div className="xnod-grid-2" style={{ padding: 36, gap: 36 }}>
-            <div>
-              <h3 style={{ fontSize: 18, marginBottom: 20, color: C.primaryDeep }}>Sí incluye:</h3>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {incluye.map((item, i) => (
-                  <li key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 12, fontSize: 14.5, color: C.textPrimary }}>
-                    <div style={{ flexShrink: 0, marginTop: 2 }}><IconCheck /></div>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+      <div className="xnod-section" style={{ position: "relative" }}>
+        <div className="xnod-container">
+          {/* Header */}
+          <FadeIn>
+            <div style={{ textAlign: "center", marginBottom: 64 }}>
+              <p className="xnod-eyebrow xnod-eyebrow-light">Inversión</p>
+              <h2 className="xnod-h2" style={{
+                color: "#fff",
+                maxWidth: 920,
+                margin: "0 auto 20px",
+                fontSize: "clamp(32px, 5vw, 56px)",
+                lineHeight: 1.05,
+              }}>
+                Un solo precio.<br/>
+                <span style={{
+                  background: `linear-gradient(135deg, ${C.accentLight} 0%, ${C.accent} 100%)`,
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}>Todo incluido. Sin trampas.</span>
+              </h2>
+              <p className="xnod-lead" style={{ color: "rgba(255,255,255,0.85)", maxWidth: 720, margin: "0 auto" }}>
+                Pago anticipado al confirmar fecha. Aceptamos pesos al dólar venta oficial, USD o cripto. Sin tiers, sin upsells, sin renovaciones.
+              </p>
             </div>
-            <div>
-              <h3 style={{ fontSize: 18, marginBottom: 20, color: C.textSecondary }}>No incluye:</h3>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {noIncluye.map((item, i) => (
-                  <li key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 12, fontSize: 14.5, color: C.textSecondary }}>
-                    <div style={{ flexShrink: 0, marginTop: 2 }}><IconX /></div>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          </FadeIn>
 
-          <div style={{ padding: "0 36px 36px", textAlign: "center" }}>
-            <a className="xnod-cta" href={WA_PAY} target="_blank" rel="noopener noreferrer" style={{ width: "100%", maxWidth: 380 }}>
-              Coordinar fecha y pagar
-            </a>
-          </div>
+          {/* Pricing Card destacada */}
+          <FadeIn>
+            <div style={{
+              maxWidth: 1080,
+              margin: "0 auto 72px",
+              background: "rgba(255,255,255,0.04)",
+              border: `1px solid ${C.accentLight}40`,
+              borderRadius: 28,
+              overflow: "hidden",
+              boxShadow: `0 30px 80px rgba(0,0,0,0.4), 0 0 100px ${C.primary}33`,
+              backdropFilter: "blur(8px)",
+              position: "relative",
+            }}>
+              {/* Top banner: precio gigante */}
+              <div style={{
+                background: `linear-gradient(135deg, ${C.primary} 0%, ${C.primaryDeep} 100%)`,
+                padding: "48px 32px",
+                position: "relative",
+                overflow: "hidden",
+              }}>
+                <div aria-hidden="true" style={{
+                  position: "absolute", top: -80, right: -80, width: 280, height: 280,
+                  borderRadius: "50%", background: "rgba(255,255,255,0.06)", pointerEvents: "none",
+                }}/>
+                <div className="xnod-pricing-header" style={{
+                  display: "grid", gridTemplateColumns: "1fr", gap: 28, alignItems: "center",
+                  position: "relative",
+                }}>
+                  <div>
+                    <span style={{
+                      display: "inline-block",
+                      padding: "6px 14px", borderRadius: 999,
+                      background: "rgba(255,255,255,0.15)",
+                      border: "1px solid rgba(255,255,255,0.2)",
+                      fontSize: 11, fontWeight: 700, letterSpacing: 2, marginBottom: 18,
+                      color: "#fff",
+                    }}>
+                      ★ PAQUETE ÚNICO
+                    </span>
+                    <p style={{ fontSize: 13, fontWeight: 600, color: C.accentLight, letterSpacing: 1.5, marginBottom: 8 }}>
+                      XNOD ACTIVATE
+                    </p>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 14, flexWrap: "wrap" }}>
+                      <span style={{ fontSize: 22, fontWeight: 600, color: "rgba(255,255,255,0.7)" }}>USD</span>
+                      <span style={{
+                        fontSize: "clamp(80px, 12vw, 140px)",
+                        fontWeight: 800,
+                        color: "#fff",
+                        lineHeight: 0.9,
+                        letterSpacing: "-0.04em",
+                      }}>500</span>
+                    </div>
+                    <p style={{ fontSize: 16, color: "rgba(255,255,255,0.92)", fontWeight: 500, marginBottom: 6 }}>
+                      Para todo tu equipo. Una sola vez.
+                    </p>
+                    <p style={{ fontSize: 13, color: "rgba(255,255,255,0.65)" }}>
+                      Equivale a <strong style={{ color: "#fff" }}>USD 5/persona</strong> en un equipo de 100 · <strong style={{ color: "#fff" }}>USD 50/persona</strong> en un equipo de 10
+                    </p>
+                  </div>
+
+                  <div style={{ display: "grid", gap: 12 }}>
+                    {[
+                      { num: "∞", label: "Agente IA sin caducidad" },
+                      { num: "0", label: "Costos de uso después" },
+                      { num: "1", label: "Pago, sin renovaciones" },
+                    ].map((b, i) => (
+                      <div key={i} style={{
+                        display: "flex", alignItems: "center", gap: 14,
+                        padding: "12px 16px",
+                        background: "rgba(255,255,255,0.10)",
+                        borderRadius: 12,
+                        border: "1px solid rgba(255,255,255,0.12)",
+                      }}>
+                        <div style={{
+                          width: 44, height: 44, flexShrink: 0,
+                          background: "rgba(255,255,255,0.15)",
+                          borderRadius: 10,
+                          display: "flex", alignItems: "center", justifyContent: "center",
+                          fontSize: 22, fontWeight: 800, color: "#fff",
+                        }}>
+                          {b.num}
+                        </div>
+                        <span style={{ fontSize: 14, color: "rgba(255,255,255,0.92)", fontWeight: 500 }}>
+                          {b.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Body: incluye / no incluye */}
+              <div className="xnod-grid-2" style={{ padding: 40, gap: 40 }}>
+                <div>
+                  <p style={{ fontSize: 11, fontWeight: 700, color: C.accentLight, letterSpacing: 1.8, marginBottom: 18 }}>
+                    ✓ TODO ESTO INCLUIDO
+                  </p>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                    {incluye.map((item, i) => (
+                      <li key={i} style={{
+                        display: "flex", gap: 12, alignItems: "flex-start",
+                        marginBottom: 12, fontSize: 14.5,
+                        color: "rgba(255,255,255,0.92)",
+                        lineHeight: 1.5,
+                      }}>
+                        <div style={{ flexShrink: 0, marginTop: 2 }}><IconCheck color={C.accentLight} /></div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.5)", letterSpacing: 1.8, marginBottom: 18 }}>
+                    × NO INCLUYE (TRANSPARENCIA)
+                  </p>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0, marginBottom: 28 }}>
+                    {noIncluye.map((item, i) => (
+                      <li key={i} style={{
+                        display: "flex", gap: 12, alignItems: "flex-start",
+                        marginBottom: 12, fontSize: 14,
+                        color: "rgba(255,255,255,0.6)",
+                        lineHeight: 1.5,
+                      }}>
+                        <div style={{ flexShrink: 0, marginTop: 2 }}><IconX color="rgba(255,255,255,0.4)" /></div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div style={{
+                    padding: 16,
+                    background: "rgba(255,255,255,0.06)",
+                    borderRadius: 10,
+                    border: "1px solid rgba(255,255,255,0.10)",
+                  }}>
+                    <p style={{ fontSize: 12, fontWeight: 700, color: C.accentLight, marginBottom: 6, letterSpacing: 1 }}>
+                      MEDIOS DE PAGO
+                    </p>
+                    <p style={{ fontSize: 13, color: "rgba(255,255,255,0.85)" }}>
+                      Pesos al dólar venta oficial · USD · Cripto (USDT/USDC)
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA grande */}
+              <div style={{
+                padding: "0 40px 40px",
+                textAlign: "center",
+              }}>
+                <a
+                  className="xnod-cta"
+                  href={WA_PAY}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ width: "100%", maxWidth: 460, fontSize: 18, padding: "20px 36px", minHeight: 64 }}
+                >
+                  Coordinar fecha y pagar
+                </a>
+                <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", marginTop: 16 }}>
+                  Cancelación 100% reembolsable hasta 7 días antes · Te respondemos en menos de 24hs hábiles
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Comparativa con alternativas */}
+          <FadeIn>
+            <div style={{ maxWidth: 980, margin: "0 auto" }}>
+              <p style={{ textAlign: "center", fontSize: 13, fontWeight: 700, color: C.accentLight, letterSpacing: 2, marginBottom: 28 }}>
+                CÓMO SE COMPARA CON LAS ALTERNATIVAS
+              </p>
+              <div className="xnod-grid-3">
+                {comparativa.map((c, i) => (
+                  <div key={i} style={{
+                    padding: "26px 22px",
+                    background: c.highlight ? `linear-gradient(135deg, ${C.primary} 0%, ${C.primaryDeep} 100%)` : "rgba(255,255,255,0.04)",
+                    border: c.highlight ? `2px solid ${C.accentLight}` : "1px solid rgba(255,255,255,0.10)",
+                    borderRadius: 14,
+                    textAlign: "center",
+                    position: "relative",
+                    transform: c.highlight ? "scale(1.03)" : "none",
+                    boxShadow: c.highlight ? `0 12px 32px ${C.primary}55` : "none",
+                  }}>
+                    {c.highlight && (
+                      <span style={{
+                        position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)",
+                        padding: "4px 14px", borderRadius: 999,
+                        background: C.accentLight, color: C.primaryNight,
+                        fontSize: 10, fontWeight: 800, letterSpacing: 1.4,
+                      }}>
+                        TU OPCIÓN
+                      </span>
+                    )}
+                    <p style={{
+                      fontSize: 11.5, fontWeight: 700,
+                      color: c.highlight ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.55)",
+                      letterSpacing: 1, marginBottom: 14, marginTop: c.highlight ? 4 : 0,
+                      textTransform: "uppercase",
+                    }}>
+                      {c.item}
+                    </p>
+                    <p style={{
+                      fontSize: 30, fontWeight: 800,
+                      color: c.highlight ? "#fff" : "rgba(255,255,255,0.7)",
+                      lineHeight: 1, marginBottom: 6,
+                      textDecoration: !c.highlight ? "line-through" : "none",
+                      textDecorationColor: "rgba(255,255,255,0.3)",
+                    }}>
+                      {c.costo}
+                    </p>
+                    <p style={{
+                      fontSize: 11.5,
+                      color: c.highlight ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.5)",
+                      marginBottom: 14,
+                    }}>
+                      {c.costoLabel}
+                    </p>
+                    <p style={{
+                      fontSize: 13,
+                      color: c.highlight ? "#fff" : "rgba(255,255,255,0.7)",
+                      fontWeight: c.highlight ? 600 : 400,
+                      paddingTop: 14,
+                      borderTop: `1px solid ${c.highlight ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.10)"}`,
+                    }}>
+                      {c.note}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
         </div>
-      </FadeIn>
-    </Section>
+      </div>
+    </section>
   );
 }
 
@@ -1633,7 +1870,7 @@ function NavHeader() {
           style={{ display: "inline-flex", alignItems: "center", gap: 10, whiteSpace: "nowrap", cursor: "pointer" }}
         >
           <span
-            aria-label="Alan Cernigoy"
+            aria-label="Alan Tapia"
             style={{
               width: 30, height: 30, borderRadius: "50%", overflow: "hidden",
               border: `1.5px solid ${C.accentLight}80`,
