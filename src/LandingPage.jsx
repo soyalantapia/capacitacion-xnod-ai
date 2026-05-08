@@ -585,7 +585,7 @@ function Solucion() {
               <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 14.5, color: "rgba(255,255,255,0.95)" }}>
                 {[
                   "Trabajo en vivo con tu equipo en simultáneo",
-                  "Casos y demos hechos a medida de tu industria",
+                  "Casos y ejemplos hechos a medida de tu industria",
                   "Infraestructura entregada que queda funcionando",
                   "Agente IA propio para tu empresa, sin caducidad",
                   "Marco claro de qué se sube, qué no y bajo qué reglas",
@@ -616,7 +616,7 @@ function ComoLoHacemos() {
       num: "01",
       label: "ANTES · 1 semana",
       titulo: "Personalizamos a tu industria",
-      texto: "Llamada con vos para entender tu rubro, tu equipo y los procesos donde la IA va a aportar más. Adaptamos contenido, ejemplos y demos a tu día a día real.",
+      texto: "Llamada con vos para entender tu rubro, tu equipo y los procesos donde la IA va a aportar más. Adaptamos contenido y ejemplos a tu día a día real.",
       output: "Plan a medida",
     },
     {
@@ -1324,7 +1324,7 @@ function PorQueXNOD() {
 
 function EventosAnteriores() {
   const eventos = [
-    { src: "fotos/event-1.jpg", caption: "Aceleración de startups", meta: "Workshop · Buenos Aires" },
+    { src: "fotos/event-1.jpg", caption: "Aceleración de startups", meta: "Taller · Buenos Aires" },
     { src: "fotos/event-3.jpg", caption: "Uso de IA en empresas", meta: "Charla · San Pedro" },
     { src: "fotos/event-4.jpg", caption: "IA aplicada a cadenas gastronómicas", meta: "Capacitación corporativa" },
     { src: "fotos/event-5.jpg", caption: "Aceleradora Sparklab", meta: "Programa de aceleración" },
@@ -1838,9 +1838,9 @@ function FAQ() {
     { q: "¿Política de cancelación?", a: "Más de 7 días antes: reembolso 100% o reprogramación sin cargo. Entre 3 y 7 días: 50% o reprogramación con cargo. Menos de 72hs: sin reembolso." },
     { q: "Mi equipo ya sabe usar ChatGPT, ¿vale la pena?", a: "Saber usar la herramienta no es lo mismo que tenerla integrada al proceso. La activación ordena el uso disperso, define qué se sube y qué no, y deja un agente común para todo el equipo." },
     { q: "¿Para empresas chicas también sirve?", a: "Sí. Funciona desde 5 personas hasta 100+." },
-    { q: "¿Cómo personalizan los demos a mi industria?", a: "En la llamada previa entendemos tu rubro, procesos críticos y casos de uso. Con eso preparamos demos que ejecutamos en vivo durante el evento usando datos similares a los tuyos (sin tocar información real)." },
+    { q: "¿Cómo personalizan los ejemplos a mi industria?", a: "En la llamada previa entendemos tu rubro, procesos críticos y casos de uso. Con eso preparamos ejemplos que ejecutamos en vivo durante el evento usando datos similares a los tuyos (sin tocar información real)." },
     { q: "¿En qué idioma se dicta?", a: "Español argentino por defecto. Podemos dictarlo en inglés con confirmación previa." },
-    { q: "¿Qué necesita preparar mi empresa antes del evento?", a: "Solo participar de la llamada de 30 minutos previa y avisar al equipo de la fecha. El setup del agente IA, el material y los demos los traemos listos." },
+    { q: "¿Qué necesita preparar mi empresa antes del evento?", a: "Solo participar de la llamada de 30 minutos previa y avisar al equipo de la fecha. La configuración del agente IA, el material y los ejemplos los traemos listos." },
     { q: "¿Pueden dar referencias de clientes anteriores?", a: "Sí. Compartimos referencias verificables en la llamada de coordinación a quienes están en proceso de decisión final." },
   ];
   return (
