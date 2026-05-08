@@ -710,22 +710,28 @@ function ComoLoHacemos() {
 function Testimoniales() {
   const quotes = [
     {
-      quote: "En una jornada activamos a todo el equipo comercial. A las dos semanas cada vendedor recuperaba más de 5 horas semanales en tareas administrativas.",
-      autor: "Director Comercial",
-      empresa: "Empresa de comercio · Argentina",
-      iniciales: "DC",
+      quote: "Alan dio una conferencia excelente en San Pedro. Muy clara, muy aplicada. Después de escucharlo, todos en el salón nos quedamos hablando de cómo aplicar la IA a nuestro trabajo.",
+      autor: "Germán López",
+      empresa: "Presidente de la Unión de Parlamentarios",
+      iniciales: "GL",
     },
     {
-      quote: "Pasamos de cotizar a mano a que el cliente cotice solo. La activación fue el primer paso del proyecto que nos posicionó número uno en Córdoba.",
-      autor: "CEO",
-      empresa: "Distribuidora · Córdoba",
-      iniciales: "CE",
+      quote: "Una gran charla, muy enfocada en hacer y aportar valor real. No fue teoría: fue una activación con casos concretos que pudimos llevarnos a nuestros equipos al día siguiente.",
+      autor: "Germán Daleffe",
+      empresa: "Director de Carrera, Instituto Cervantes",
+      iniciales: "GD",
     },
     {
-      quote: "Reportes que nos tomaban un día completo ahora se arman en 30 minutos. El agente IA hace el cruce de datos, redacta el análisis y nos queda solo revisar.",
-      autor: "Gerente de Operaciones",
-      empresa: "Proveedor automotriz · Latinoamérica",
-      iniciales: "GO",
+      quote: "Fue increíble. Alan trajo claridad sobre cómo usar IA en el día a día de nuestro colegio. Lo recomendamos a cualquier institución que esté pensando en avanzar con esto.",
+      autor: "Autoridades de CUCICBA",
+      empresa: "Colegio Único de Corredores Inmobiliarios",
+      iniciales: "CU",
+    },
+    {
+      quote: "Una charla muy enfocada. Sin perder tiempo en abstracciones. Cada minuto agregó algo concreto que nuestros profesionales pudieron aplicar.",
+      autor: "Presidente del CPI",
+      empresa: "Consejo Profesional Inmobiliario",
+      iniciales: "CP",
     },
   ];
 
@@ -734,16 +740,16 @@ function Testimoniales() {
       <FadeIn>
         <p className="xnod-eyebrow">Testimoniales</p>
         <h2 className="xnod-h2" style={{ maxWidth: 880 }}>
-          Lo que dicen las empresas que ya pasaron por la activación.
+          Lo que dicen quienes ya nos invitaron a hablar.
         </h2>
-        <p className="xnod-lead" style={{ maxWidth: 720, marginBottom: 56 }}>
-          Equipos reales, resultados medibles. Algunos prefieren no figurar públicamente. Compartimos referencias verificables en la llamada de coordinación.
+        <p className="xnod-lead" style={{ maxWidth: 760, marginBottom: 56 }}>
+          Cámaras, colegios profesionales e instituciones que escucharon la activación de XNOD. Equipos reales, resultados medibles.
         </p>
       </FadeIn>
 
-      <div className="xnod-grid-3">
+      <div className="xnod-grid-2" style={{ gap: 20 }}>
         {quotes.map((t, i) => (
-          <FadeIn key={i} delay={i * 100}>
+          <FadeIn key={i} delay={i * 80}>
             <article style={{
               padding: 0,
               background: C.white,
