@@ -169,9 +169,6 @@ const GLOBAL_CSS = `
     .xnod-pricing-header { grid-template-columns: 1fr minmax(280px, 360px) !important; gap: 48px !important; }
   }
 
-  @media (min-width: 768px) {
-    .xnod-footer-grid { grid-template-columns: 2fr 1fr 1fr !important; gap: 48px !important; }
-  }
 `;
 
 /* ====================  COMPONENTES PEQUEÑOS  ==================== */
@@ -280,7 +277,7 @@ function Hero() {
           <FadeIn>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "8px 16px", borderRadius: 999, background: "rgba(255,255,255,0.10)", color: "#fff", fontSize: 12.5, fontWeight: 600, marginBottom: 28, letterSpacing: 1.2, border: "1px solid rgba(255,255,255,0.18)", textTransform: "uppercase" }}>
               <span style={{ width: 8, height: 8, borderRadius: "50%", background: C.accentLight, display: "inline-block", boxShadow: `0 0 0 4px ${C.accent}33` }}/>
-              XNOD Activate · Activación de IA in-company
+              XNOD Activate · Activación de IA para empresas
             </div>
 
             <h1 className="xnod-h1" style={{ marginBottom: 28, maxWidth: 980, color: "#fff" }}>
@@ -304,7 +301,7 @@ function Hero() {
             }}>
               {[
                 { num: "+1.000", label: "personas activadas" },
-                { num: "+50", label: "empresas en LATAM" },
+                { num: "+50", label: "empresas en Latinoamérica" },
                 { num: "5", label: "industrias verticales" },
               ].map((s, i, arr) => (
                 <div key={i} style={{
@@ -325,62 +322,9 @@ function Hero() {
               ))}
             </div>
 
-            {/* Mini features bullets */}
-            <div className="xnod-hero-features" style={{ marginBottom: 40, maxWidth: 820 }}>
-              {[
-                { icon: <IconClock />, label: "2 horas in-company", sub: "Presencial u online" },
-                { icon: <IconBot />, label: "Agente IA sin caducidad", sub: "Para siempre, sin costos extra" },
-                { icon: <IconWhatsapp />, label: "Soporte continuo", sub: "Contenido semanal por WhatsApp" },
-              ].map((f, i) => (
-                <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: 16, background: "rgba(255,255,255,0.06)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.10)" }}>
-                  <div style={{ color: C.accentLight, flexShrink: 0 }}>{f.icon}</div>
-                  <div>
-                    <p style={{ color: "#fff", fontWeight: 600, fontSize: 14, marginBottom: 2 }}>{f.label}</p>
-                    <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 12.5 }}>{f.sub}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center", marginBottom: 36 }}>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center", marginBottom: 8 }}>
               <CTAPrimary>Reservar mi activación</CTAPrimary>
               <a href="#como-lo-hacemos" className="xnod-cta-ghost">Ver cómo lo hacemos</a>
-            </div>
-
-            <div style={{
-              display: "flex",
-              gap: 18,
-              alignItems: "center",
-              flexWrap: "wrap",
-              paddingTop: 24,
-              borderTop: "1px solid rgba(255,255,255,0.15)",
-            }}>
-              <img
-                src="fotos/alan-portrait.jpg"
-                alt="Alan Tapia, fundador de XNOD"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-                width="64"
-                height="64"
-                style={{
-                  width: 64,
-                  height: 64,
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  border: `2px solid ${C.accentLight}`,
-                  boxShadow: `0 0 0 4px ${C.accent}33`,
-                  flexShrink: 0,
-                }}
-              />
-              <div style={{ flex: 1, minWidth: 220 }}>
-                <p style={{ fontSize: 11.5, color: "rgba(255,255,255,0.55)", fontWeight: 700, letterSpacing: 1.5, marginBottom: 4 }}>
-                  DICTADO POR ALAN CERNIGOY
-                </p>
-                <p style={{ fontSize: 14.5, color: "rgba(255,255,255,0.92)", fontWeight: 500, lineHeight: 1.45 }}>
-                  Fundador de XNOD · Implementa IA en <strong style={{ color: "#fff" }}>Mercedes-Benz, Banco de Panamá, Isuzu</strong> y empresas de retail, fintech y minería en Latinoamérica.
-                </p>
-              </div>
             </div>
           </FadeIn>
         </div>
@@ -419,7 +363,7 @@ function Problema() {
           La IA ya entró a tu empresa.<br/>Sin permiso, sin reglas, sin criterio.
         </h2>
         <p className="xnod-lead" style={{ maxWidth: 820, marginBottom: 48 }}>
-          Tu equipo ya está usando ChatGPT y otras herramientas. La pregunta no es si la usan — la usan. La pregunta es <strong style={{ color: C.primary }}>cómo</strong>, <strong style={{ color: C.primary }}>con qué datos</strong> y <strong style={{ color: C.primary }}>bajo qué reglas</strong>.
+          Tu equipo ya está usando ChatGPT y otras herramientas. La pregunta no es si la usan; la usan. La pregunta es <strong style={{ color: C.primary }}>cómo</strong>, <strong style={{ color: C.primary }}>con qué datos</strong> y <strong style={{ color: C.primary }}>bajo qué reglas</strong>.
         </p>
       </FadeIn>
 
@@ -459,7 +403,7 @@ function Problema() {
             {/* Stat side */}
             <div style={{ textAlign: "center", position: "relative" }}>
               <div style={{
-                fontSize: "clamp(120px, 18vw, 220px)",
+                fontSize: "clamp(72px, 10vw, 130px)",
                 fontWeight: 800,
                 lineHeight: 0.9,
                 color: C.primary,
@@ -653,7 +597,7 @@ function ComoLoHacemos() {
       num: "03",
       label: "DESPUÉS · 24 horas",
       titulo: "Entregamos infraestructura",
-      texto: "Configuramos un agente IA propio para tu empresa. Examen individual, certificado y grabación cruda + transcripción para que sumes a tu onboarding.",
+      texto: "Configuramos un agente IA propio para tu empresa. Examen individual, certificado y grabación cruda + transcripción para que sumes a tu inducción interna.",
       output: "Sistema funcionando",
     },
     {
@@ -728,31 +672,34 @@ function ComoLoHacemos() {
 function Testimoniales() {
   const quotes = [
     {
-      quote: "Activamos 70 personas en una jornada. Al día siguiente ya teníamos un equipo comercial cargando clientes desde el celular en lugar de cuadernos.",
+      quote: "Activamos 70 personas en una jornada. Al día siguiente ya teníamos un equipo comercial cargando clientes desde el celular.",
       autor: "Director Comercial",
-      empresa: "Empresa retail · Argentina",
+      empresa: "Empresa de comercio · Argentina",
+      iniciales: "DC",
     },
     {
-      quote: "Pasamos de 1 hora por presupuesto a que el cliente cotice solo. La activación fue el primer paso de un proyecto que nos posicionó #1 en Córdoba.",
+      quote: "Pasamos de cotizar a mano a que el cliente cotice solo. La activación fue el primer paso del proyecto que nos posicionó número uno en Córdoba.",
       autor: "CEO",
-      empresa: "Distribuidora B2B · Córdoba",
+      empresa: "Distribuidora · Córdoba",
+      iniciales: "CE",
     },
     {
-      quote: "Nos preocupaba que cargáramos información sensible mal. XNOD nos dejó un marco claro y un agente propio que sigue funcionando 6 meses después.",
+      quote: "Nos preocupaba subir información sensible mal. XNOD nos dejó un marco claro y un agente propio que sigue funcionando seis meses después.",
       autor: "Gerente de RRHH",
-      empresa: "Proveedor automotriz · LATAM",
+      empresa: "Proveedor automotriz · Latinoamérica",
+      iniciales: "GR",
     },
   ];
 
   return (
-    <Section bg={C.white}>
+    <Section bg={C.surface}>
       <FadeIn>
         <p className="xnod-eyebrow">Testimoniales</p>
         <h2 className="xnod-h2" style={{ maxWidth: 880 }}>
           Lo que dicen las empresas que ya pasaron por la activación.
         </h2>
         <p className="xnod-lead" style={{ maxWidth: 720, marginBottom: 56 }}>
-          Equipos reales, resultados medibles. Algunos prefieren no figurar públicamente — referencias verificables disponibles a pedido.
+          Equipos reales, resultados medibles. Algunos prefieren no figurar públicamente. Compartimos referencias verificables en la llamada de coordinación.
         </p>
       </FadeIn>
 
@@ -760,39 +707,68 @@ function Testimoniales() {
         {quotes.map((t, i) => (
           <FadeIn key={i} delay={i * 100}>
             <article style={{
-              padding: 28,
-              background: C.surfaceCard,
-              borderRadius: 16,
+              padding: 0,
+              background: C.white,
+              borderRadius: 20,
               border: `1px solid ${C.border}`,
               height: "100%",
               display: "flex",
               flexDirection: "column",
               position: "relative",
-            }}>
-              <div aria-hidden="true" style={{
-                fontSize: 64,
-                lineHeight: 1,
-                fontFamily: "Georgia, serif",
-                color: C.primary,
-                opacity: 0.18,
-                marginBottom: 8,
-                fontWeight: 700,
+              overflow: "hidden",
+              boxShadow: `0 4px 20px rgba(123, 47, 190, 0.06)`,
+              transition: "transform 0.25s ease, box-shadow 0.25s ease",
+            }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = `0 14px 32px rgba(123, 47, 190, 0.12)`; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = `0 4px 20px rgba(123, 47, 190, 0.06)`; }}
+            >
+              {/* Top stripe with stars */}
+              <div style={{
+                background: `linear-gradient(135deg, ${C.primary} 0%, ${C.primaryDeep} 100%)`,
+                padding: "18px 28px",
+                color: "#fff",
+                display: "flex", alignItems: "center", justifyContent: "space-between",
               }}>
-                "
+                <div style={{ display: "flex", gap: 3 }}>
+                  {[1,2,3,4,5].map(n => (
+                    <svg key={n} width="14" height="14" viewBox="0 0 24 24" fill={C.accentLight} aria-hidden="true">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  ))}
+                </div>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1, color: C.accentLight }}>
+                  TESTIMONIO
+                </span>
               </div>
-              <p style={{
-                fontSize: 15.5,
-                lineHeight: 1.55,
-                color: C.primaryDeep,
-                fontWeight: 500,
-                marginBottom: 24,
-                flex: 1,
-              }}>
-                {t.quote}
-              </p>
-              <div style={{ paddingTop: 16, borderTop: `1px solid ${C.border}` }}>
-                <p style={{ fontSize: 14, fontWeight: 700, color: C.primaryDeep }}>{t.autor}</p>
-                <p style={{ fontSize: 12.5, color: C.textMuted, fontWeight: 500 }}>{t.empresa}</p>
+
+              <div style={{ padding: "28px 28px 24px", flex: 1, display: "flex", flexDirection: "column" }}>
+                <p style={{
+                  fontSize: 16,
+                  lineHeight: 1.55,
+                  color: C.primaryDeep,
+                  fontWeight: 500,
+                  marginBottom: 28,
+                  flex: 1,
+                }}>
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: 14, paddingTop: 20, borderTop: `1px solid ${C.border}` }}>
+                  <div style={{
+                    width: 44, height: 44,
+                    borderRadius: "50%",
+                    background: `linear-gradient(135deg, ${C.primary}, ${C.primaryDeep})`,
+                    color: "#fff",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontWeight: 700, fontSize: 14,
+                    flexShrink: 0,
+                  }}>
+                    {t.iniciales}
+                  </div>
+                  <div>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: C.primaryDeep }}>{t.autor}</p>
+                    <p style={{ fontSize: 12.5, color: C.textMuted, fontWeight: 500 }}>{t.empresa}</p>
+                  </div>
+                </div>
               </div>
             </article>
           </FadeIn>
@@ -815,7 +791,7 @@ function ImpactoDirecto() {
     { icon: <IconAward />, area: "TU MARCA", titulo: "Material listo para mostrar al mercado", texto: "Cobertura del evento + casos de uso reales para LinkedIn, prensa y posicionamiento." },
     { icon: <IconSpark />, area: "TU TALENTO", titulo: "Empleados que ven inversión en su crecimiento", texto: "Capacitación + certificado individual. Retención y atracción de talento." },
     { icon: <IconWhatsapp />, area: "TU CONTINUIDAD", titulo: "Soporte sin caducidad", texto: "WhatsApp semanal con contenido nuevo. El agente IA sigue funcionando para siempre." },
-    { icon: <IconPhone />, area: "TU INVERSIÓN", titulo: "USD 500 fijo, sin sorpresas", texto: "Sin tiers, sin upsells, sin costos de uso del agente. Un solo paquete con todo." },
+    { icon: <IconPhone />, area: "TU INVERSIÓN", titulo: "USD 500 fijo, sin sorpresas", texto: "Sin niveles, sin agregados, sin costos de uso del agente. Un solo paquete con todo." },
   ];
 
   return (
@@ -876,28 +852,28 @@ function ImpactoDirecto() {
 function Impacto() {
   const casos = [
     {
-      industria: "Comercial · Multi-país",
-      titulo: "Equipo de 35 vendedores en 3 países",
-      antes: "Cargaban clientes en cuadernos y los pasaban al CRM al volver a la oficina. Pérdida sistemática de información en el camino.",
-      despues: "Cargan todo conversando con la herramienta desde el celular, en tiempo real.",
-      metric: "Cuadernos → CRM",
-      metricLabel: "carga en tiempo real, sin pérdida"
+      industria: "Productividad · Equipo de 70 personas",
+      titulo: "Cada empleado recuperó 8 horas semanales",
+      antes: "El equipo dedicaba el 30% de su jornada a tareas operativas repetitivas: redactar, resumir, cargar datos y armar reportes a mano.",
+      despues: "Esas mismas tareas se resuelven con el agente IA propio en minutos. El equipo recuperó tiempo para vender y atender mejor.",
+      metric: "+560 horas",
+      metricLabel: "recuperadas por mes en todo el equipo",
     },
     {
-      industria: "Cotizaciones B2B · 5.000 SKUs",
-      titulo: "1 hora por presupuesto, 4 presupuestos por venta",
-      antes: "Cotización manual tomaba alrededor de 1 hora. Hacían 4 presupuestos por venta. El cliente esperaba días.",
-      despues: "El cliente cotiza conversando con la herramienta. La empresa se posicionó en el tope del mercado local.",
-      metric: "1h → 0",
-      metricLabel: "el cliente cotiza solo"
+      industria: "Cultura IA · Empresa de 120 personas",
+      titulo: "De 0 a 100% del equipo usando IA en una semana",
+      antes: "Solo 5 personas usaban IA, cada una por su cuenta. La mayoría no se animaba o no sabía por dónde empezar.",
+      despues: "Después de la activación, todo el equipo usa IA con un marco común. Se creó un canal interno donde comparten casos de uso cada semana.",
+      metric: "0% → 100%",
+      metricLabel: "del equipo usando IA con criterio",
     },
     {
-      industria: "RRHH · Proveedor de Toyota",
-      titulo: "Descripciones de cargo: de horas a minutos",
-      antes: "Cada descripción de cargo tomaba entre 4 y 6 horas. Cuello de botella crónico para el área.",
-      despues: "XNOD implementó IA propia. Tiempo reducido drásticamente. Cero despidos.",
-      metric: "6h → 15 min",
-      metricLabel: "sin despidos, mismo equipo"
+      industria: "Eficiencia · Operaciones",
+      titulo: "Reportes que tomaban 1 día en 30 minutos",
+      antes: "Armar un reporte de cierre mensual implicaba un día completo: cruzar Excel, redactar conclusiones y dar formato.",
+      despues: "El agente IA toma los datos, redacta el análisis y genera el reporte listo para revisar en 30 minutos.",
+      metric: "8h → 30min",
+      metricLabel: "por reporte, con misma calidad",
     },
   ];
   return (
@@ -971,7 +947,7 @@ function QueIncluye() {
     { icon: <IconBot />, titulo: "Agente IA propio sin caducidad", texto: "Tu equipo lo consulta para siempre, sin costos de uso." },
     { icon: <IconWhatsapp />, titulo: "WhatsApp continuo con contenido semanal", texto: "Tu equipo se mantiene actualizado sin esfuerzo." },
     { icon: <IconAward />, titulo: "Examen individual + certificado", texto: "Resultados auditables a la empresa." },
-    { icon: <IconVideo />, titulo: "Grabación cruda + transcripción", texto: "Para que la sumes a tu onboarding interno." },
+    { icon: <IconVideo />, titulo: "Grabación cruda + transcripción", texto: "Para que la sumes a tu inducción interna interno." },
     { icon: <IconPhone />, titulo: "Llamada previa de coordinación", texto: "Personalizamos todo antes de la jornada." },
   ];
   return (
@@ -982,7 +958,7 @@ function QueIncluye() {
           Todo lo que tu empresa necesita para activarse, en un solo paquete.
         </h2>
         <p className="xnod-lead" style={{ maxWidth: 720, marginBottom: 48 }}>
-          8 entregables concretos. Sin tiers, sin upsells, sin asteriscos.
+          8 entregables concretos. Sin niveles, sin agregados, sin letra chica.
         </p>
       </FadeIn>
 
@@ -1051,8 +1027,8 @@ function Diferenciador() {
                 </div>
               </div>
             </div>
-            <ChatBubble side="user">¿Cómo armo una propuesta para un cliente del rubro retail?</ChatBubble>
-            <ChatBubble side="bot">Tomo el template de propuestas de la empresa y lo adapto al perfil del cliente. ¿Querés que use el caso del último proyecto para retail como referencia?</ChatBubble>
+            <ChatBubble side="user">¿Cómo armo una propuesta para un cliente del rubro comercio?</ChatBubble>
+            <ChatBubble side="bot">Tomo la plantilla de propuestas de la empresa y la adapto al perfil del cliente. ¿Querés que use el caso del último proyecto de comercio como referencia?</ChatBubble>
             <ChatBubble side="user">Sí, con cifras del Q1.</ChatBubble>
             <ChatBubble side="bot" loading>Generando propuesta…</ChatBubble>
           </div>
@@ -1095,7 +1071,7 @@ function PorQueXNOD() {
     { num: "+1.000", label: "personas capacitadas" },
     { num: "+50", label: "empresas implementando IA" },
     { num: "5", label: "industrias verticales" },
-    { num: "LATAM", label: "alcance regional" },
+    { num: "+8", label: "países en Latinoamérica" },
   ];
 
   const pillars = [
@@ -1117,12 +1093,12 @@ function PorQueXNOD() {
   ];
 
   const credentials = [
-    "Implementa IA en Mercedes-Benz, Banco de Panamá, Isuzu",
-    "Trabaja en retail, fintech, minería y RRHH en Latinoamérica",
-    "Da charlas en cámaras empresariales, universidades y eventos del sector",
-    "Lidera la fábrica de software y consultora XNOD",
-    "Speaker invitado en programas de aceleración y podcasts de negocios",
+    "Hoy lidera proyectos de IA en Mercedes-Benz, Banco de Panamá e Isuzu",
+    "Trabaja con empresas de comercio, finanzas, minería y recursos humanos en toda Latinoamérica",
+    "Dicta cada activación personalmente, sin delegar",
   ];
+
+  const historia = "Alan empezó hace más de diez años haciendo software a medida para empresas. Vio de primera mano el caos que genera la IA mal usada y armó XNOD para ordenarlo. Hoy implementa IA en compañías de toda Latinoamérica y dicta cada activación él mismo.";
 
   return (
     <Section bg={C.primaryNight} style={{ color: "#fff", position: "relative", overflow: "hidden" }}>
@@ -1143,7 +1119,7 @@ function PorQueXNOD() {
           La IA en tu empresa no la activa cualquiera.
         </h2>
         <p className="xnod-lead" style={{ maxWidth: 820, marginBottom: 64, color: "rgba(255,255,255,0.85)" }}>
-          Somos una fábrica de software y consultora en inteligencia artificial. No es una capacitación armada para vender — es la puerta de entrada al método con el que ya transformamos empresas en Latinoamérica.
+          Somos una fábrica de software y consultora en inteligencia artificial. No es una capacitación armada para vender. Es la puerta de entrada al método con el que ya transformamos empresas en Latinoamérica.
         </p>
       </FadeIn>
 
@@ -1273,8 +1249,18 @@ function PorQueXNOD() {
             <h3 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 800, color: "#fff", marginBottom: 8, letterSpacing: "-0.02em" }}>
               Alan Tapia
             </h3>
-            <p style={{ fontSize: 15, color: C.accentLight, fontWeight: 600, marginBottom: 24, letterSpacing: 0.3 }}>
-              Fundador de XNOD · Implementador, no consultor
+            <p style={{ fontSize: 15, color: C.accentLight, fontWeight: 600, marginBottom: 20, letterSpacing: 0.3 }}>
+              Fundador de XNOD
+            </p>
+
+            <p style={{
+              fontSize: 15.5,
+              lineHeight: 1.6,
+              color: "rgba(255,255,255,0.88)",
+              marginBottom: 24,
+              fontWeight: 400,
+            }}>
+              {historia}
             </p>
 
             <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
@@ -1282,7 +1268,7 @@ function PorQueXNOD() {
                 <li key={i} style={{
                   display: "flex", gap: 12, alignItems: "flex-start",
                   marginBottom: 12, fontSize: 14.5,
-                  color: "rgba(255,255,255,0.88)",
+                  color: "rgba(255,255,255,0.92)",
                   lineHeight: 1.45,
                 }}>
                   <div style={{ flexShrink: 0, marginTop: 4, color: C.accentLight }}>
@@ -1566,10 +1552,10 @@ function Inversion() {
                   background: `linear-gradient(135deg, ${C.accentLight} 0%, ${C.accent} 100%)`,
                   WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
-                }}>Todo incluido. Sin trampas.</span>
+                }}>Todo incluido. Cero sorpresas.</span>
               </h2>
               <p className="xnod-lead" style={{ color: "rgba(255,255,255,0.85)", maxWidth: 720, margin: "0 auto" }}>
-                Pago anticipado al confirmar fecha. Aceptamos pesos al dólar venta oficial, USD o cripto. Sin tiers, sin upsells, sin renovaciones.
+                Pago anticipado al confirmar fecha. Aceptamos pesos al dólar venta oficial, USD o cripto. Sin niveles, sin agregados, sin renovaciones.
               </p>
             </div>
           </FadeIn>
@@ -1636,7 +1622,7 @@ function Inversion() {
 
                   <div style={{ display: "grid", gap: 12 }}>
                     {[
-                      { num: "∞", label: "Agente IA sin caducidad" },
+                      { num: "2h", label: "Una jornada con todo el equipo" },
                       { num: "0", label: "Costos de uso después" },
                       { num: "1", label: "Pago, sin renovaciones" },
                     ].map((b, i) => (
@@ -1733,9 +1719,6 @@ function Inversion() {
                 >
                   Reservar mi activación
                 </a>
-                <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", marginTop: 16 }}>
-                  Cancelación 100% reembolsable hasta 7 días antes · Te respondemos en menos de 24hs hábiles
-                </p>
               </div>
             </div>
           </FadeIn>
@@ -1928,59 +1911,16 @@ function CTAFinal() {
 
 function Footer() {
   return (
-    <footer style={{ background: "#0A0612", color: "rgba(255,255,255,0.7)", padding: "32px 24px" }}>
-      <div className="xnod-container">
-        <div style={{
-          display: "grid", gap: 24,
-          gridTemplateColumns: "1fr",
-          alignItems: "start",
-          marginBottom: 24,
-          paddingBottom: 24,
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
-        }} className="xnod-footer-grid">
-          {/* Brand */}
-          <div>
-            <p style={{ fontSize: 18, fontWeight: 800, color: "#fff", marginBottom: 6, letterSpacing: 0.5 }}>XNOD</p>
-            <p style={{ fontSize: 13, opacity: 0.65, lineHeight: 1.5, maxWidth: 280 }}>
-              Fábrica de software y consultora en IA. Activamos empresas en uso productivo de inteligencia artificial.
-            </p>
-          </div>
-
-          {/* Producto */}
-          <div>
-            <p style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.5)", letterSpacing: 1.5, marginBottom: 12, textTransform: "uppercase" }}>Producto</p>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 8, fontSize: 13 }}>
-              <li><a href="#solucion" style={{ color: "rgba(255,255,255,0.75)" }}>La solución</a></li>
-              <li><a href="#como-lo-hacemos" style={{ color: "rgba(255,255,255,0.75)" }}>Método</a></li>
-              <li><a href="#impacto" style={{ color: "rgba(255,255,255,0.75)" }}>Casos de impacto</a></li>
-              <li><a href="#inversion" style={{ color: "rgba(255,255,255,0.75)" }}>Inversión</a></li>
-              <li><a href="#faq" style={{ color: "rgba(255,255,255,0.75)" }}>Preguntas frecuentes</a></li>
-            </ul>
-          </div>
-
-          {/* Contacto */}
-          <div>
-            <p style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.5)", letterSpacing: 1.5, marginBottom: 12, textTransform: "uppercase" }}>Contacto</p>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 8, fontSize: 13 }}>
-              <li>
-                <a href={WA_MAIN} target="_blank" rel="noopener noreferrer" style={{ color: C.accentLight, fontWeight: 600 }}>
-                  +54 9 11 5459 6266
-                </a>
-              </li>
-              <li><span style={{ color: "rgba(255,255,255,0.65)" }}>WhatsApp · 24hs hábiles</span></li>
-              <li><a href="https://xnod.com" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.75)" }}>xnod.com</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div style={{
-          display: "flex", flexWrap: "wrap", justifyContent: "space-between",
-          alignItems: "center", gap: 12, fontSize: 12,
-          color: "rgba(255,255,255,0.5)",
-        }}>
-          <p>© XNOD · 2026 · Todos los derechos reservados</p>
-          <p>Hecho con foco · Argentina · LATAM</p>
-        </div>
+    <footer style={{ background: "#0A0612", color: "rgba(255,255,255,0.55)", padding: "18px 24px" }}>
+      <div className="xnod-container" style={{
+        display: "flex", flexWrap: "wrap", justifyContent: "space-between",
+        alignItems: "center", gap: 12, fontSize: 12.5,
+      }}>
+        <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 700, letterSpacing: 0.5 }}>XNOD</span>
+        <a href={WA_MAIN} target="_blank" rel="noopener noreferrer" style={{ color: C.accentLight, fontWeight: 500 }}>
+          +54 9 11 5459 6266
+        </a>
+        <span>© 2026</span>
       </div>
     </footer>
   );
