@@ -65,8 +65,13 @@ const GLOBAL_CSS = `
     line-height: 1.6;
     font-weight: 400;
   }
-  h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.2; color: ${C.primaryNight}; letter-spacing: -0.015em; }
-  p { margin: 0; }
+  h1, h2, h3, h4 {
+    margin: 0; font-weight: 700; line-height: 1.2; color: ${C.primaryNight};
+    letter-spacing: -0.015em;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  p { margin: 0; overflow-wrap: break-word; word-wrap: break-word; }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }
   html { scroll-behavior: smooth; }
