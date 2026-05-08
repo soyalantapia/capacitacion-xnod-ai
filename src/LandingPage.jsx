@@ -219,6 +219,31 @@ function FadeIn({ children, delay = 0 }) {
   );
 }
 
+/* ====================  PICTURE (WebP + JPG fallback)  ==================== */
+
+function Picture({ src, alt, width, height, loading = "lazy", fetchPriority, style, className, decoding = "async" }) {
+  // src can come with .jpg or without extension. Always serve WebP first, JPG fallback.
+  const base = src.replace(/\.(jpg|jpeg|png|webp)$/i, "");
+  const webp = `${base}.webp`;
+  const jpg = `${base}.jpg`;
+  return (
+    <picture>
+      <source srcSet={webp} type="image/webp" />
+      <img
+        src={jpg}
+        alt={alt}
+        loading={loading}
+        decoding={decoding}
+        fetchPriority={fetchPriority}
+        width={width}
+        height={height}
+        style={style}
+        className={className}
+      />
+    </picture>
+  );
+}
+
 /* ====================  ICONOS  ==================== */
 
 const Icon = ({ children, size = 28 }) => (
@@ -469,13 +494,11 @@ function Problema() {
               }}/>
 
               <figcaption style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                <img
-                  src="fotos/alan-portrait.jpg"
+                <Picture
+                  src="fotos/alan-portrait"
                   alt="Alan Tapia"
-                  loading="lazy"
-                  decoding="async"
-                  width="52"
-                  height="52"
+                  width={52}
+                  height={52}
                   style={{
                     width: 52, height: 52,
                     borderRadius: "50%",
@@ -1239,11 +1262,9 @@ function PorQueXNOD() {
             background: `linear-gradient(135deg, ${C.primary} 0%, ${C.primaryDeep} 100%)`,
             overflow: "hidden",
           }}>
-            <img
-              src="fotos/alan-portrait.jpg"
+            <Picture
+              src="fotos/alan-portrait"
               alt="Alan Tapia, fundador de XNOD"
-              loading="lazy"
-              decoding="async"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
             <div style={{
@@ -1350,13 +1371,11 @@ function EventosAnteriores() {
               }}
             >
               <div style={{ aspectRatio: "4/3", overflow: "hidden", background: C.surfaceCard }}>
-                <img
+                <Picture
                   src={ev.src}
                   alt={ev.caption}
-                  loading="lazy"
-                  decoding="async"
-                  width="320"
-                  height="240"
+                  width={320}
+                  height={240}
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />
               </div>
@@ -1935,7 +1954,7 @@ function Footer() {
               border: `1.5px solid ${C.accentLight}80`,
               boxShadow: `0 2px 12px ${C.accent}40`,
               flexShrink: 0,
-              backgroundImage: "url(fotos/alan-portrait.jpg)",
+              backgroundImage: "image-set(url('fotos/alan-portrait.webp') type('image/webp'), url('fotos/alan-portrait.jpg') type('image/jpeg'))",
               backgroundSize: "cover", backgroundPosition: "center top",
               display: "inline-block",
             }}
@@ -2079,7 +2098,7 @@ function NavHeader() {
               border: `1.5px solid ${C.accentLight}80`,
               boxShadow: `0 2px 12px ${C.accent}40`,
               flexShrink: 0,
-              backgroundImage: "url(fotos/alan-portrait.jpg)",
+              backgroundImage: "image-set(url('fotos/alan-portrait.webp') type('image/webp'), url('fotos/alan-portrait.jpg') type('image/jpeg'))",
               backgroundSize: "cover", backgroundPosition: "center top",
             }}
           />
