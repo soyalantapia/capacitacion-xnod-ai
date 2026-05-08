@@ -111,6 +111,11 @@ const GLOBAL_CSS = `
   .xnod-fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .xnod-fade-in.visible { opacity: 1; transform: translateY(0); }
 
+  @keyframes xnodFadeDown {
+    from { opacity: 0; transform: translate(-50%, -10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+  }
+
   details > summary { list-style: none; cursor: pointer; }
   details > summary::-webkit-details-marker { display: none; }
 
@@ -197,8 +202,13 @@ function FadeIn({ children, delay = 0 }) {
   const ref = (el) => {
     if (!el || visible) return;
     const observer = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setTimeout(() => setVisible(true), delay),
-      { threshold: 0.1 }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setVisible(true), delay);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -50px 0px" }
     );
     observer.observe(el);
   };
@@ -1602,10 +1612,10 @@ function Inversion() {
                     <p style={{ fontSize: 13, fontWeight: 600, color: C.accentLight, letterSpacing: 1.5, marginBottom: 8 }}>
                       XNOD ACTIVATE
                     </p>
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 14, flexWrap: "wrap" }}>
-                      <span style={{ fontSize: 22, fontWeight: 600, color: "rgba(255,255,255,0.7)" }}>USD</span>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 14, flexWrap: "nowrap" }}>
+                      <span style={{ fontSize: "clamp(18px, 3vw, 26px)", fontWeight: 600, color: "rgba(255,255,255,0.7)", lineHeight: 1 }}>USD</span>
                       <span style={{
-                        fontSize: "clamp(80px, 12vw, 140px)",
+                        fontSize: "clamp(64px, 11vw, 120px)",
                         fontWeight: 800,
                         color: "#fff",
                         lineHeight: 0.9,
@@ -2004,12 +2014,23 @@ function FloatingWA() {
 
 function NavHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Cierra menú al hacer click en un anchor
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onClick = (e) => {
+      if (e.target.tagName === "A" || e.target.closest("a")) setMenuOpen(false);
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, [menuOpen]);
 
   const links = [
     ["Solución", "#solucion"],
@@ -2025,7 +2046,13 @@ function NavHeader() {
     <>
       <style>{`
         .xnod-nav-links { display: none; }
-        @media (min-width: 1024px) { .xnod-nav-links { display: flex !important; } }
+        .xnod-nav-burger { display: inline-flex; }
+        .xnod-nav-cta-text { display: none; }
+        @media (min-width: 1024px) {
+          .xnod-nav-links { display: flex !important; }
+          .xnod-nav-burger { display: none !important; }
+          .xnod-nav-cta-text { display: inline !important; }
+        }
       `}</style>
       <nav
         style={{
@@ -2037,7 +2064,7 @@ function NavHeader() {
           border: `1px solid ${scrolled ? "rgba(168,110,224,0.35)" : "rgba(255,255,255,0.10)"}`,
           boxShadow: scrolled ? "0 8px 32px rgba(0,0,0,0.45)" : "0 4px 20px rgba(0,0,0,0.25)",
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          gap: 18, width: "min(1080px, 96vw)", transition: "all 0.4s ease",
+          gap: 12, width: "min(1080px, 96vw)", transition: "all 0.4s ease",
         }}
       >
         <a
@@ -2081,26 +2108,96 @@ function NavHeader() {
           ))}
         </div>
 
-        <a
-          href={WA_MAIN}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            padding: "8px 16px", borderRadius: 100, fontSize: 13, fontWeight: 600,
-            background: `linear-gradient(135deg, ${C.primary}, ${C.primaryDeep})`,
-            color: "#fff", letterSpacing: 0.3,
-            transition: "transform 0.2s, box-shadow 0.2s",
-            display: "inline-flex", alignItems: "center", gap: 6, whiteSpace: "nowrap",
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.04)"; e.currentTarget.style.boxShadow = `0 0 20px ${C.primary}66`; }}
-          onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "none"; }}
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-          </svg>
-          Reservar
-        </a>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <a
+            href={WA_MAIN}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Reservar por WhatsApp"
+            style={{
+              padding: "8px 14px", borderRadius: 100, fontSize: 13, fontWeight: 600,
+              background: `linear-gradient(135deg, ${C.primary}, ${C.primaryDeep})`,
+              color: "#fff", letterSpacing: 0.3,
+              transition: "transform 0.2s, box-shadow 0.2s",
+              display: "inline-flex", alignItems: "center", gap: 6, whiteSpace: "nowrap",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.04)"; e.currentTarget.style.boxShadow = `0 0 20px ${C.primary}66`; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "none"; }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span className="xnod-nav-cta-text">Reservar</span>
+          </a>
+
+          {/* Hamburger mobile */}
+          <button
+            type="button"
+            className="xnod-nav-burger"
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              alignItems: "center", justifyContent: "center",
+              width: 40, height: 40, borderRadius: 100,
+              background: "rgba(255,255,255,0.10)",
+              border: "1px solid rgba(255,255,255,0.18)",
+              color: "#fff", cursor: "pointer",
+              flexShrink: 0,
+            }}
+          >
+            {menuOpen ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+            )}
+          </button>
+        </div>
       </nav>
+
+      {/* Mobile menu drawer */}
+      {menuOpen && (
+        <div
+          style={{
+            position: "fixed", top: 76, left: "50%", transform: "translateX(-50%)",
+            zIndex: 99, width: "min(1080px, 96vw)",
+            background: "rgba(31,14,54,0.96)",
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
+            border: "1px solid rgba(168,110,224,0.35)",
+            borderRadius: 18,
+            padding: 16,
+            boxShadow: "0 12px 40px rgba(0,0,0,0.5)",
+            animation: "xnodFadeDown 0.25s ease-out",
+          }}
+        >
+          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 4 }}>
+            {links.map(([label, href]) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  style={{
+                    display: "block",
+                    padding: "12px 16px",
+                    borderRadius: 10,
+                    fontSize: 15, fontWeight: 500,
+                    color: "rgba(255,255,255,0.85)",
+                    transition: "background 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.08)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </>
   );
 }
